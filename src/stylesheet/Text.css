@@ -1,0 +1,29 @@
+.text {
+    font-family: 'Segoe UI', sans-serif;
+    color: #2e3132;
+    line-height: 1.6;
+    margin: 0;
+    display: block;
+    /* Garante que o texto ocupe a linha toda */
+    width: 100%;
+    /* Força a largura total */
+    margin-top: 8px;
+    /* Afasta um pouco do título */
+    /* Se estiver dentro de um flexbox, isso evita que ele encolha */
+    flex-shrink: 0;
+
+}
+
+.text.body {
+    font-size: 1rem;
+}
+
+.text.small {
+    font-size: 0.875rem;
+    color: #b2bec3;
+}
+
+.text.highlight {
+    font-weight: 600;
+    color: #2d3436;
+}

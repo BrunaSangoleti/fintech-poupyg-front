@@ -1,0 +1,46 @@
+/* DashboardGrid.css */
+.dashboard-grid {
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+.card.small {
+    grid-column: span 1;
+}
+
+.card.medium {
+    grid-column: span 2;
+}
+
+.card.large {
+    grid-column: span 3;
+}
+
+/* No CSS do componente que contém os botões */
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    /* Empurra um para cada lado */
+    /* ou */
+    justify-content: center;
+    /* Centraliza todos com espaço igual entre eles */
+    gap: 16px;
+}
+
+@media (max-width: 600px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+
+        width: 100%;
+        min-width: 0;
+    }
+}

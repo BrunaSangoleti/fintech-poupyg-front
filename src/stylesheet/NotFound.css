@@ -1,0 +1,18 @@
+.error-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background: linear-gradient(lab(100% 0.01 -0.01 / 0.273), rgba(255, 255, 255, 0.9)),
+        url('../assets/NotFound.png');
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+}
+
+.error-content {
+    max-width: 400px;
+    padding: 2rem;
+}
+

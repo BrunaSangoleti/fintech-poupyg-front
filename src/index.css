@@ -1,0 +1,28 @@
+/* src/index.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, #root {
+  width: 100%;
+  min-height: 100vh; /* Garante que a página tenha no mínimo a altura da tela */
+}
+
+.page-background {
+  /* 1. Define o caminho da imagem na pasta public */
+  background-image: url('./assets/Pattern.png');
+  
+  /* 2. Faz a imagem cobrir todo o espaço disponível */
+  background-size: cover;
+  
+  /* 3. Centraliza a imagem para que o foco principal não saia de cena */
+  background-position: center;
+  
+  /* 4. Impede que a imagem se repita (ex: se o monitor for gigante) */
+  background-repeat: no-repeat;
+  
+  /* 5. Garante que a página ocupe, no mínimo, a altura da tela */
+  min-height: 100vh;
+}

@@ -1,0 +1,27 @@
+.login-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    
+    background:
+        
+        url('../assets/BackgroungLogin.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.login-box {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    z-index: 1;
+    
+}
+

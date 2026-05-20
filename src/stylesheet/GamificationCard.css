@@ -1,0 +1,43 @@
+.gamification-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.597);
+    border-left: 5px solid #00b894;
+    /* Cor temática de sucesso */
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.badge-pontos {
+    background: #e0f2f1;
+    color: #00b894;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.progress-bg {
+    background: #eee;
+    height: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    background: #00b894;
+    height: 100%;
+    transition: width 0.5s ease;
+}
+
+.progress-text {
+    margin-top: 8px;
+    font-size: 0.9rem;
+    color: #636e72;
+}

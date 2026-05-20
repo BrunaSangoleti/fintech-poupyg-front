@@ -1,0 +1,40 @@
+.achievement-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+    border-radius: 12px;
+    background: #ffffff;
+    text-align: center;
+    border: 2px solid #eee;
+    transition: all 0.3s ease;
+}
+
+/* Estado bloqueado: cinza e opaco */
+.achievement-badge.locked {
+    filter: grayscale(1);
+    opacity: 0.6;
+}
+
+/* Estado desbloqueado: destaque com borda verde */
+.achievement-badge.unlocked {
+    border-color: #00b894;
+    background: #f0faf8;
+}
+
+.badge-icon {
+    font-size: 2.5rem;
+    margin-bottom: 8px;
+}
+
+.badge-info h4 {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #2d3436;
+}
+
+.badge-info p {
+    margin: 4px 0 0;
+    font-size: 0.75rem;
+    color: #636e72;
+}

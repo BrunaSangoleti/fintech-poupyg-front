@@ -1,0 +1,40 @@
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s ease;
+    margin-right: 12px;
+}
+
+.btn.green {
+    background-color: #099078;
+    color: white;
+}
+
+.btn.green:hover {
+    background-color: hsla(170, 100%, 28%, 0.463);
+}
+
+.btn.red {
+    background-color: #9c2113;
+    color: white;
+}
+
+.btn.red:hover {
+    background-color: hwb(6 7% 39% / 0.537);
+}
+
+.btn.action {
+    background-color: #1d1b1b;
+    color: white;
+}
+
+.btn.action:hover {
+    background-color: hsla(0, 4%, 11%, 0.716);
+}
+
+.btn:last-child {
+    margin-right: 0;
+}

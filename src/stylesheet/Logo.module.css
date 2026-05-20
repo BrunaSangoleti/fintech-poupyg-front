@@ -1,0 +1,15 @@
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.logoImage {
+    display: block;
+    object-fit: contain;
+    width: clamp(80px, 15vw, 150px);
+    height: auto;
+}

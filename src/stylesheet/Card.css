@@ -1,0 +1,15 @@
+.card {
+    background-color: #ffffff;
+    color: white; /* Adicionei cor branca para o texto ficar legível no fundo escuro */
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.597);
+    border: 1px solid #e5e7eb;
+    border-left: 5px solid #0b0b0b;
+    
+    /* Novos ajustes para o conteúdo não vazar */
+    min-width: 0; 
+    word-wrap: break-word;
+    transition: opacity 0.3s ease;
+}
+
