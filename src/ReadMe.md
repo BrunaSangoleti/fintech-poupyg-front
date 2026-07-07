@@ -2,8 +2,7 @@
 
 O **Poupyg** é uma aplicação voltada para pessoas que buscam organizar sua vida financeira, oferecendo controle total sobre receitas, despesas e investimentos em uma interface intuitiva.
 
-RM:567014 Nome: Bruna Cristina Sangoleti de Onofre
-RM:5667014 Nome: Douglas Cristian Ferreira
+
 
 ---
 
@@ -20,8 +19,8 @@ RM:5667014 Nome: Douglas Cristian Ferreira
 
 Utilize as credenciais abaixo para acessar a conta de demonstração:
 
-* **Login:** `CLOTILDES@EMAIL.COM`
-* **Senha:** `SENHA123`
+* **Login:** `frieren@email.com`
+* **Senha:** `senha123`
 
 ---
 
@@ -49,3 +48,5 @@ Siga os passos abaixo para rodar o projeto localmente:
    ```bash
    npm run dev
 3. Siga o link localhost gerado.
+
+4. ## Atenção : certifique-se de ter o node instalado em sua máquina ##
