@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import Button from './Button';
 import '../stylesheet/LoginForm.css'
+import axios from 'axios';
+import Text from './Text';
 
 interface LoginFormProps {
     onLogin: (data: any) => void;
@@ -38,8 +40,11 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
                     required
                 />
             </div>
-            <Button tipe='action'>Entrar</Button>
-            <Button tipe='action'>Cadastrar agora</Button>
+            
+            <Button tipe='action' >Entrar</Button>
+            
+            
+            
         </form>
     );
 };

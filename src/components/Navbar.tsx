@@ -11,7 +11,7 @@ interface NavItem {
 export const Navbar = () => {
 
     const navItems: NavItem[] = [
-        { name: 'Dashboard', path: '/' },
+        { name: 'Dashboard', path: '/home' },
         { name: 'Movimentações', path: '/movimentacoes'},
         { name: 'Investimentos', path: '/investimento' },
         { name: 'Meu Perfil', path: '/perfil' },
@@ -22,7 +22,7 @@ export const Navbar = () => {
     return (
         <nav className="navbar">
             <div className="logo">
-                <Link to="/">
+                <Link to="/home">
                     <img src={logoImage} alt="Logo da Fintech" />
                 </Link>
             </div>

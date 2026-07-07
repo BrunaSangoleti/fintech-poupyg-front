@@ -2,8 +2,13 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 2rem;
-    /* Espaço para separar o cabeçalho do conteúdo (Grid) */
     width: 100%;
+    background-color: #ffffff;
+    border-radius: 14px;
+    
+    /* Adicione estas linhas */
+    padding: 24px; /* Ajuste o valor conforme sua necessidade (ex: 16px, 32px) */
+    box-sizing: border-box; /* Garante que o padding não aumente a largura total da div */
 }
 
 /* Opcional: Garante um leve ajuste visual */

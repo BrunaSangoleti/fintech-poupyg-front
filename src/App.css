@@ -7,6 +7,55 @@
 
 body {
   width: 100%;
-  min-height: 100vh;
-  font-family: sans-serif; /* Para garantir uma fonte limpa */
+  min-height: 10vh;
+  font-family: sans-serif; }
+
+.card-aviso-login {
+    background-color: #a2f0a0;
+    border: 1px solid #c2e7cd;
+    border-radius: 6px;
+    padding: 8px 12px; 
+    margin-bottom: 16px;
+    width: 100%;
+    max-width: 360px; 
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+
+.card-aviso-login p {
+    margin: 0;
+    color: #0d0e0d;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+
+.credenciais-teste-box {
+    display: flex;
+    justify-content: space-between; 
+    gap: 10px;
+    background-color: rgba(145, 221, 142, 0.7);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #202124;
+}
+
+.credenciais-teste-box span {
+    white-space: nowrap; 
+}
+
+.credenciais-teste-box strong {
+    color: #137333;
+}
+
+
+@media (max-width: 360px) {
+    .credenciais-teste-box {
+        flex-direction: column; 
+        gap: 2px;
+    }
 }
