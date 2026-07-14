@@ -2,6 +2,10 @@
 
 O **Poupyg** é uma aplicação voltada para pessoas que buscam organizar sua vida financeira, oferecendo controle total sobre receitas, despesas e investimentos em uma interface intuitiva.
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> e754803d7bd6a1972f69f9b07bace6f94108bc65
 
 ---
 
