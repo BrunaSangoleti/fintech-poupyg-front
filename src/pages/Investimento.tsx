@@ -53,7 +53,7 @@ export const Investimento = () => {
         try {
             setError(null);
             
-            const response = await fetch(`http://localhost:8080/api/investimento?usuarioId=${usuarioId}`, {
+            const response = await fetch(`https://fintech-poupyg-backend.onrender.com/api/investimento?usuarioId=${usuarioId}`, {
                 headers: getHeaders()
             });
             const data = await response.json();
@@ -72,7 +72,7 @@ export const Investimento = () => {
     const salvarEdicaoInvestimento = async (item: any) => {
         const usuarioId = localStorage.getItem('usuarioId');
         try {
-            const response = await fetch(`http://localhost:8080/api/investimento/${item.id}`, {
+            const response = await fetch(`https://fintech-poupyg-backend.onrender.com/api/investimento/${item.id}`, {
                 method: 'PUT',
                 headers: getHeaders(true),
                 body: JSON.stringify({ 
@@ -97,7 +97,7 @@ export const Investimento = () => {
     const deletarInvestimento = async (id: number) => {
         if (window.confirm("Deseja realmente excluir este investimento?")) {
             try {
-                const response = await fetch(`http://localhost:8080/api/investimento/${id}`, { 
+                const response = await fetch(`https://fintech-poupyg-backend.onrender.com/api/investimento/${id}`, { 
                     method: 'DELETE',
                     headers: getHeaders()
                 });

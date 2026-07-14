@@ -17,7 +17,7 @@ export const Login: React.FC = () => {
         }
 
         try {
-            const API_URL = 'http://localhost:8080/api/usuarios/login';
+            const API_URL = 'https://fintech-poupyg-backend.onrender.com/api/usuarios/login';
 
             const response = await fetch(API_URL, {
                 method: 'POST',

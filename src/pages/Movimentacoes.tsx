@@ -48,8 +48,8 @@ import Modal from '../components/Modal';
         try {
             setError(null);
             const [resReceitas, resDespesas] = await Promise.all([
-                fetch(`http://localhost:8080/api/receita?usuarioId=${usuarioId}`, { headers: getHeaders() }).then(r => r.json()),
-                fetch(`http://localhost:8080/api/despesa?usuarioId=${usuarioId}`, { headers: getHeaders() }).then(r => r.json())
+                fetch(`https://fintech-poupyg-backend.onrender.com/api/receita?usuarioId=${usuarioId}`, { headers: getHeaders() }).then(r => r.json()),
+                fetch(`https://fintech-poupyg-backend.onrender.com/api/despesa?usuarioId=${usuarioId}`, { headers: getHeaders() }).then(r => r.json())
             ]);
 
             const listaReceitas = resReceitas.content ? resReceitas.content : resReceitas;
@@ -74,7 +74,7 @@ import Modal from '../components/Modal';
     const salvarEdicao = async (item: any) => {
         const usuarioId = localStorage.getItem('usuarioId');
         try {
-            const response = await fetch(`http://localhost:8080/api/${item.tipo}/${item.id}`, {
+            const response = await fetch(`https://fintech-poupyg-backend.onrender.com/api/${item.tipo}/${item.id}`, {
                 method: 'PUT',
                 headers: getHeaders(true),
                 body: JSON.stringify({
@@ -98,7 +98,7 @@ import Modal from '../components/Modal';
     const deletarMovimentacao = async (id: number, tipo: string) => {
         if (window.confirm("Deseja realmente excluir este item?")) {
             try {
-                const response = await fetch(`http://localhost:8080/api/${tipo}/${id}`, { 
+                const response = await fetch(`https://fintech-poupyg-backend.onrender.com/api/${tipo}/${id}`, { 
                     method: 'DELETE',
                     headers: getHeaders()
                 });

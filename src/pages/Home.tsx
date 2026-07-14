@@ -38,9 +38,9 @@ export const Home = () => {
             setErro(null);
 
             const endpoints = [
-                { url: `http://localhost:8080/api/despesa?usuarioId=${usuarioId}`, setter: setDespesas },
-                { url: `http://localhost:8080/api/investimento?usuarioId=${usuarioId}`, setter: setInvestimentos },
-                { url: `http://localhost:8080/api/receita?usuarioId=${usuarioId}`, setter: setReceitas }
+                { url: `https://fintech-poupyg-backend.onrender.com/api/despesa?usuarioId=${usuarioId}`, setter: setDespesas },
+                { url: `https://fintech-poupyg-backend.onrender.com/api/investimento?usuarioId=${usuarioId}`, setter: setInvestimentos },
+                { url: `https://fintech-poupyg-backend.onrender.com/api/receita?usuarioId=${usuarioId}`, setter: setReceitas }
             ];
 
             const promessas = endpoints.map(async (item) => {

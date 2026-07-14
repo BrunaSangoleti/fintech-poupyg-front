@@ -142,7 +142,7 @@ export const Perfil = () => {
 
         try {
             
-            const response = await fetch(`http://localhost:8080/api/usuarios/${usuario.codigo}/senha`, {
+            const response = await fetch(`https://fintech-poupyg-backend.onrender.com/api/usuarios/${usuario.codigo}/senha`, {
                 method: 'PUT',
                 headers: getHeaders(true),
                 body: JSON.stringify({
