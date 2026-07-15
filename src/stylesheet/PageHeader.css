@@ -1,18 +1,23 @@
 .page-header {
     display: flex;
     flex-direction: column;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     width: 100%;
     background-color: #ffffff;
     border-radius: 14px;
-    
-    /* Adicione estas linhas */
-    padding: 24px; /* Ajuste o valor conforme sua necessidade (ex: 16px, 32px) */
-    box-sizing: border-box; /* Garante que o padding não aumente a largura total da div */
+    padding: 20px 24px;
+    box-sizing: border-box;
 }
 
-/* Opcional: Garante um leve ajuste visual */
 .page-header h1 {
     margin-bottom: 0.25rem;
-    /* Título e subtítulo ficam mais próximos entre si */
 }
+
+/* ── Mobile (≤ 600px) ─────────────────────────────── */
+@media (max-width: 600px) {
+    .page-header {
+        padding: 14px 16px;
+        margin-bottom: 1rem;
+        border-radius: 10px;
+    }
+}

@@ -1,10 +1,26 @@
 .dashboard-container {
     min-height: 100vh;
     width: 100%;
-    /* Remova as quebras de linha estranhas dentro da propriedade */
     background: linear-gradient(#ffffff, #ffffff1b), url('../assets/Pattern.png');
     background-size: cover;
     background-position: center;
     padding: 24px;
-    padding-top: 80px;
+    padding-top: 80px; /* espaço para navbar fixa */
+    box-sizing: border-box;
 }
+
+/* ── Tablet (≤ 768px) ─────────────────────────────── */
+@media (max-width: 768px) {
+    .dashboard-container {
+        padding: 16px;
+        padding-top: 76px;
+    }
+}
+
+/* ── Mobile (≤ 600px) ─────────────────────────────── */
+@media (max-width: 600px) {
+    .dashboard-container {
+        padding: 12px;
+        padding-top: 72px;
+    }
+}

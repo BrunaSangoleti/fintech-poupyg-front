@@ -1,16 +1,15 @@
 /* DashboardGrid.css */
 .dashboard-grid {
     display: grid;
-
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 24px;
-    padding: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    padding: 16px 0;
     width: 100%;
     box-sizing: border-box;
-    background-color: #ffffff;
+    background-color: transparent;
     border-radius: 14px;
+    margin-bottom: 20px;
 }
-
 
 .card.small {
     grid-column: span 1;
@@ -21,28 +20,43 @@
 }
 
 .card.large {
-    grid-column: span 3;
+    grid-column: 1 / -1;
 }
 
-/* No CSS do componente que contém os botões */
+/* Container de botões dentro dos cards */
 .button-container {
     display: flex;
-    justify-content: space-between;
-    /* Empurra um para cada lado */
-    /* ou */
     justify-content: center;
-    /* Centraliza todos com espaço igual entre eles */
     gap: 16px;
+    flex-wrap: wrap;
 }
 
+/* ── Tablet (≤ 768px) ─────────────────────────────── */
+@media (max-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 16px;
+    }
+
+    .card.medium {
+        grid-column: 1 / -1;
+    }
+}
+
+/* ── Mobile (≤ 600px) ─────────────────────────────── */
 @media (max-width: 600px) {
     .dashboard-grid {
         grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 8px 0;
     }
 
-    .card {
-
+    .card,
+    .card.small,
+    .card.medium,
+    .card.large {
+        grid-column: 1 / -1;
         width: 100%;
         min-width: 0;
     }
-}
+}

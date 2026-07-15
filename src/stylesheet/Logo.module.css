@@ -3,13 +3,26 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 1rem;
+    /* Reduz a margem inferior em telas pequenas */
+    margin-bottom: clamp(0.4rem, 2vh, 1rem);
     width: 100%;
 }
 
 .logoImage {
     display: block;
     object-fit: contain;
-    width: clamp(80px, 15vw, 150px);
+    /* O inline style define width, mas max-width limita em mobile */
+    max-width: clamp(100px, 40vw, 220px);
     height: auto;
 }
+
+/* Em telas muito pequenas, reduz ainda mais */
+@media (max-width: 480px) {
+    .logoImage {
+        max-width: 130px;
+    }
+
+    .container {
+        margin-bottom: 0.4rem;
+    }
+}

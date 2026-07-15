@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { LoginForm } from '../components/LoginForm';
 import Title from '../components/Title';
 import '../stylesheet/Login.css';
@@ -7,14 +7,26 @@ import Text from '../components/Text';
 import PageHeader from '../components/PageHeader';
 import { Logo } from '../components/Logo';
 
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 
 export const Login: React.FC = () => {
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(false);
+    const [showColdStart, setShowColdStart] = useState(false);
+    const coldStartTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
     const handleLoginSubmit = async (data: any, event?: any) => {
         if (event && event.preventDefault) {
             event.preventDefault();
         }
+
+        setIsLoading(true);
+        setShowColdStart(false);
+
+        /* Após 5s sem resposta, avisa o usuário sobre o cold start */
+        coldStartTimerRef.current = setTimeout(() => {
+            setShowColdStart(true);
+        }, 5000);
 
         try {
             const API_URL = 'https://fintech-poupyg-backend.onrender.com/api/usuarios/login';
@@ -26,7 +38,7 @@ export const Login: React.FC = () => {
                 },
                 body: JSON.stringify({
                     email: data.email,
-                    senha: data.senha || data.password 
+                    senha: data.senha || data.password
                 }),
             });
 
@@ -63,6 +75,13 @@ export const Login: React.FC = () => {
         } catch (error) {
             console.error("Erro na autenticação:", error);
             alert("Não foi possível conectar ao servidor. Verifique sua conexão ou tente novamente.");
+        } finally {
+            /* Garante que o loading sempre seja desativado */
+            setIsLoading(false);
+            setShowColdStart(false);
+            if (coldStartTimerRef.current) {
+                clearTimeout(coldStartTimerRef.current);
+            }
         }
     };
 
@@ -88,8 +107,15 @@ export const Login: React.FC = () => {
     </div>
 </div>
 
-                <LoginForm onLogin={handleLoginSubmit} />
+                <LoginForm onLogin={handleLoginSubmit} isLoading={isLoading} />
+
+                {/* Banner de cold start — aparece após 5s sem resposta */}
+                {showColdStart && (
+                    <div className="login-coldstart-banner">
+                        ⏳ O servidor está acordando... Isso pode levar até 50 segundos na primeira vez. Por favor, aguarde.
+                    </div>
+                )}
             </div>
         </div>
     );
-};
+};

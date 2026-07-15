@@ -1,27 +1,64 @@
+/* Login.css */
+
+/* ── Desktop / base ─────────────────────────────────── */
 .login-container {
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-
-    
-    background:
-        
-        url('../assets/BackgroungLogin.png');
+    background: url('../assets/BackgroungLogin.png');
     background-size: cover;
     background-position: center;
+    /* Impede barra de rolagem horizontal em qualquer tamanho */
+    overflow-x: hidden;
+    padding: 1rem;
+    box-sizing: border-box;
 }
 
 .login-box {
     background: white;
     padding: 2rem;
     border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     width: 100%;
-    max-width: 400px;
+    max-width: 420px;
     z-index: 1;
-    
+    box-sizing: border-box;
 }
 
+/* ── Tablet (≤ 768px) ────────────────────────────────── */
+@media (max-width: 768px) {
+    .login-container {
+        /* Altura exata da viewport visível (sem barra de endereço do browser) */
+        height: 100dvh;
+        min-height: unset;
+        overflow: hidden;
+        align-items: center;
+        padding: 0.75rem;
+    }
+
+    .login-box {
+        /* Se o conteúdo ainda transbordar, rola internamente sem mostrar barra externa */
+        max-height: calc(100dvh - 1.5rem);
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding: 1.4rem 1.2rem;
+        border-radius: 10px;
+        max-width: 100%;
+    }
+}
+
+/* ── Mobile (≤ 480px) ────────────────────────────────── */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 0.5rem;
+    }
+
+    .login-box {
+        max-height: calc(100dvh - 1rem);
+        padding: 1.1rem 1rem;
+        border-radius: 8px;
+    }
+}

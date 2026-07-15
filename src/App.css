@@ -1,29 +1,18 @@
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  width: 100%;
-  min-height: 10vh;
-  font-family: sans-serif; }
+/* App.css — estilos específicos da tela de login/aviso */
 
 .card-aviso-login {
     background-color: #a2f0a0;
     border: 1px solid #c2e7cd;
     border-radius: 6px;
-    padding: 8px 12px; 
+    padding: 8px 12px;
     margin-bottom: 16px;
     width: 100%;
-    max-width: 360px; 
+    max-width: 360px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     gap: 6px;
 }
-
 
 .card-aviso-login p {
     margin: 0;
@@ -32,10 +21,9 @@ body {
     font-weight: 500;
 }
 
-
 .credenciais-teste-box {
     display: flex;
-    justify-content: space-between; 
+    justify-content: space-between;
     gap: 10px;
     background-color: rgba(145, 221, 142, 0.7);
     padding: 4px 8px;
@@ -45,17 +33,34 @@ body {
 }
 
 .credenciais-teste-box span {
-    white-space: nowrap; 
+    white-space: nowrap;
 }
 
 .credenciais-teste-box strong {
     color: #137333;
 }
 
-
 @media (max-width: 360px) {
     .credenciais-teste-box {
-        flex-direction: column; 
+        flex-direction: column;
         gap: 2px;
+    }
+}
+
+/* ── Mobile (≤ 480px) — compactar card de aviso no login ── */
+@media (max-width: 480px) {
+    .card-aviso-login {
+        padding: 6px 10px;
+        margin-bottom: 10px;
+        font-size: 11px;
+    }
+
+    .card-aviso-login p {
+        font-size: 11px;
+    }
+
+    .credenciais-teste-box {
+        font-size: 11px;
+        padding: 3px 6px;
     }
 }

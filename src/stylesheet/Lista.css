@@ -1,0 +1,142 @@
+﻿/* Lista.css — estilos compartilhados para as listas de movimentacoes e investimentos */
+
+/* Linha de item da lista */
+.lista-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #e5e7eb;
+    gap: 12px;
+    min-width: 0;
+}
+
+.lista-row:last-child {
+    border-bottom: none;
+}
+
+/* Informacoes (descricao + valor) */
+.lista-info {
+    display: flex;
+    align-items: center;
+    flex: 1 1 0;
+    gap: 12px;
+    min-width: 0;
+}
+
+.lista-descricao {
+    font-weight: 600;
+    color: #1a1a2e;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+    flex: 1;
+}
+
+.lista-valor {
+    white-space: nowrap;
+    font-weight: 500;
+    flex-shrink: 0;
+}
+
+.lista-valor.receita  { color: #099078; }
+.lista-valor.despesa  { color: #9c2113; }
+.lista-valor.investimento { color: #2196F3; }
+
+/* Acoes (botoes) */
+.lista-acoes {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+    align-items: center;
+}
+
+/* Inputs de edicao inline */
+.lista-input-descricao {
+    font-weight: 600;
+    padding: 6px 8px;
+    border-radius: 6px;
+    border: 1.5px solid #d1d5db;
+    color: #1a1a2e;
+    background: #fff;
+    outline: none;
+    min-width: 0;
+    flex: 1;
+    font-size: 0.9rem;
+}
+
+.lista-input-valor {
+    padding: 6px 8px;
+    border-radius: 6px;
+    border: 1.5px solid #d1d5db;
+    color: #1a1a2e;
+    background: #fff;
+    outline: none;
+    width: 90px;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.lista-input-descricao:focus,
+.lista-input-valor:focus {
+    border-color: #014b43;
+    box-shadow: 0 0 0 2px rgba(1, 75, 67, 0.1);
+}
+
+/* Tablet (768px) */
+@media (max-width: 768px) {
+    .lista-input-descricao { font-size: 0.85rem; }
+    .lista-input-valor { width: 80px; font-size: 0.85rem; }
+}
+
+/* Mobile (600px): reorganiza em duas linhas */
+@media (max-width: 600px) {
+    .lista-row {
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 10px 0;
+    }
+
+    .lista-info {
+        flex: 1 1 100%;
+        min-width: 0;
+    }
+
+    .lista-acoes {
+        flex: 0 0 auto;
+        width: 100%;
+        justify-content: flex-end;
+        gap: 6px;
+    }
+
+    /* Botoes menores em mobile - apenas icone */
+    .lista-acoes .btn {
+        padding: 6px 10px;
+        font-size: 0;
+        margin-right: 0;
+        border-radius: 6px;
+        min-width: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .lista-acoes .btn::before {
+        font-size: 1rem;
+        line-height: 1;
+    }
+
+    /* Icones por tipo de botao */
+    .lista-acoes .btn.action::before { content: "✏️"; }
+    .lista-acoes .btn.green::before  { content: "💾"; }
+    .lista-acoes .btn.red::before    { content: "🗑️"; }
+}
+
+/* Mobile pequeno (400px) */
+@media (max-width: 400px) {
+    .lista-acoes .btn {
+        padding: 5px 8px;
+        min-width: 32px;
+    }
+}

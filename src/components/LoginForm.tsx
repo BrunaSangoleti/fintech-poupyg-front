@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import Button from './Button';
 import '../stylesheet/LoginForm.css';
 
 interface LoginFormProps {
     onLogin: (data: any) => void;
+    isLoading?: boolean;
 }
 
-export const LoginForm = ({ onLogin }: LoginFormProps) => {
+export const LoginForm = ({ onLogin, isLoading = false }: LoginFormProps) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -14,9 +14,8 @@ export const LoginForm = ({ onLogin }: LoginFormProps) => {
         if (e) {
             e.preventDefault();
         }
-        
         onLogin({ email, password });
-    }; // <- Apenas uma chave e ponto-e-vírgula aqui fechando a função handleSubmit
+    };
 
     return (
         <form onSubmit={handleSubmit} className="login-form">
@@ -28,6 +27,8 @@ export const LoginForm = ({ onLogin }: LoginFormProps) => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
+                    disabled={isLoading}
+                    placeholder="seu@email.com"
                 />
             </div>
             <div className="input-group">
@@ -38,11 +39,19 @@ export const LoginForm = ({ onLogin }: LoginFormProps) => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
+                    disabled={isLoading}
+                    placeholder="••••••••"
                 />
             </div>
-            
-            <Button type="action" onClick={() => handleSubmit()}>Entrar</Button>
-            
+
+            <button
+                type="submit"
+                className="btn-login"
+                disabled={isLoading}
+            >
+                {isLoading && <span className="spinner" />}
+                {isLoading ? 'Entrando...' : 'Entrar'}
+            </button>
         </form>
     );
-};
+};

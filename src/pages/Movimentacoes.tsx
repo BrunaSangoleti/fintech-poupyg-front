@@ -7,6 +7,7 @@ import Text from "../components/Text";
 import Button from "../components/Button";
 import PageHeader from "../components/PageHeader";
 import Modal from '../components/Modal';
+import '../stylesheet/Lista.css';
 
     export const Movimentacoes = () => {
     const [transacoes, setTransacoes] = useState<any[]>([]);
@@ -168,54 +169,48 @@ import Modal from '../components/Modal';
                         transacoes.map((item) => (
                             <div
                                 key={`${item.tipo}-${item.id}`}
-                                style={{
-                                    display: 'flex',
-                                    justifyContent: 'space-between',
-                                    padding: '12px 0',
-                                    borderBottom: '1px solid #0b0a0aff',
-                                    alignItems: 'center'
-                                }}
+                                className="lista-row"
                             >
-                                <div style={{ display: 'flex', alignItems: 'center', flexGrow: 1, gap: '15px' }}>
+                                <div className="lista-info">
                                     {editandoId === item.id ? (
                                         <>
                                             <input
                                                 type="text"
                                                 value={descricaoEdicao}
                                                 onChange={(e) => setDescricaoEdicao(e.target.value)}
-                                                style={{ fontWeight: 'bold', padding: '6px', borderRadius: '4px', border: '1px solid #090909ff', width: '60%' }}
+                                                className="lista-input-descricao"
                                                 placeholder="Descrição"
                                             />
                                             <input
                                                 type="number"
                                                 value={valorEdicao}
                                                 onChange={(e) => setValorEdicao(e.target.value)}
-                                                style={{ padding: '6px', borderRadius: '4px', border: '1px solid #ccc', width: '25%', fontWeight: 'bold' }}
+                                                className="lista-input-valor"
                                                 placeholder="Valor (R$)"
                                             />
                                         </>
                                     ) : (
                                         <>
-                                            <span style={{ fontWeight: 'bold', minWidth: '150px', color: '#333' }}>
+                                            <span className="lista-descricao">
                                                 {item.descricao || "Sem descrição"}
                                             </span>
-                                            <span style={{ color: item.tipo === 'receita' ? 'green' : 'red', whiteSpace: 'nowrap', fontWeight: '500' }}>
+                                            <span className={`lista-valor ${item.tipo}`}>
                                                 {item.tipo === 'receita' ? '+' : '-'} R$ {Number(item.valor || 0).toFixed(2)}
                                             </span>
                                         </>
                                     )}
                                 </div>
 
-                                <span style={{ display: 'flex', gap: '8px', marginLeft: '15px' }}>
+                                <span className="lista-acoes">
                                     {editandoId === item.id ? (
                                         <Button type="green" onClick={() => salvarEdicao(item)}>Salvar</Button>
                                     ) : (
                                         <Button
                                             type="action"
-                                            onClick={() => { 
-                                                setEditandoId(item.id); 
-                                                setDescricaoEdicao(item.descricao || ""); 
-                                                setValorEdicao(item.valor || 0); 
+                                            onClick={() => {
+                                                setEditandoId(item.id);
+                                                setDescricaoEdicao(item.descricao || "");
+                                                setValorEdicao(item.valor || 0);
                                             }}
                                         >
                                             Editar

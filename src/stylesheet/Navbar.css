@@ -1,18 +1,8 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: sans-serif;
-
-    line-height: 1.6;
-}
+/* Navbar.css */
 
 .logo img {
     display: block;
-    height: 100px;
+    height: 80px;
     width: auto;
     cursor: pointer;
     transition: transform 0.2s ease;
@@ -20,13 +10,11 @@ body {
 
 .logo img:hover {
     transform: scale(1.05);
-    
 }
 
 a {
     text-decoration: none;
     color: #f9ece5;
-
 }
 
 ul {
@@ -35,7 +23,6 @@ ul {
 
 .navbar {
     position: fixed;
-
     top: 0;
     left: 0;
     width: 100%;
@@ -43,46 +30,141 @@ ul {
     background-color: #014b43;
     display: flex;
     justify-content: space-between;
-
     align-items: center;
     padding: 0 2rem;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     z-index: 1000;
 }
 
 .navbar ul {
     display: flex;
     gap: 20px;
+    align-items: center;
+}
 
+.navbar ul li a {
+    color: #f9ece5;
+    font-size: 0.95rem;
+    padding: 6px 2px;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
 }
 
 .navbar ul li a:hover {
     color: #ffd6d1;
-    
+    border-bottom-color: #ffd6d1;
 }
-
 
 .navbar ul li a:active {
     color: #FFD700;
-
     transform: scale(0.98);
-
 }
-
 
 .active-link {
     color: #ffd6d1 !important;
-    
+    border-bottom-color: #ffd6d1 !important;
 }
 
+/* ── Botão Hamburger ─────────────────────────────────── */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 6px;
+    border-radius: 6px;
+    transition: background 0.2s ease;
+}
+
+.hamburger:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.hamburger-line {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: #f9ece5;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Animação do X quando menu aberto */
+.hamburger.open .hamburger-line:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.hamburger.open .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.open .hamburger-line:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── Tablet (≤ 768px) ────────────────────────────────── */
 @media (max-width: 768px) {
     .navbar {
-        padding: 0 1rem;
+        padding: 0 1.2rem;
     }
 
     .navbar ul {
-        gap: 10px;
-        font-size: 0.9rem;
+        gap: 12px;
+        font-size: 0.88rem;
+    }
+
+    .logo img {
+        height: 60px;
     }
 }
+
+/* ── Mobile (≤ 600px) ────────────────────────────────── */
+@media (max-width: 600px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .navbar ul {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background-color: #014b43;
+        padding: 1rem 1.5rem 1.5rem;
+        gap: 0;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .navbar ul.menu-open {
+        display: flex;
+    }
+
+    .navbar ul li {
+        width: 100%;
+        border-bottom: 1px solid rgba(249, 236, 229, 0.15);
+    }
+
+    .navbar ul li:last-child {
+        border-bottom: none;
+    }
+
+    .navbar ul li a {
+        display: block;
+        padding: 14px 0;
+        font-size: 1rem;
+        border-bottom: none;
+    }
+
+    .logo img {
+        height: 50px;
+    }
+}
+
+/* ── Mobile pequeno (≤ 360px) ────────────────────────── */
+@media (max-width: 360px) {
+    .navbar {
+        padding: 0 1rem;
+    }
+}

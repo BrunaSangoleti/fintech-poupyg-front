@@ -6,10 +6,9 @@ import Title from "../components/Title";
 import Text from "../components/Text";
 import PageHeader from "../components/PageHeader";
 import { useState, useEffect } from 'react';
-
 import Button from "../components/Button";
-
 import Modal from "../components/Modal";
+import '../stylesheet/Lista.css';
 
 
 export const Investimento = () => {
@@ -158,48 +157,48 @@ export const Investimento = () => {
                     <Title level="h2">Histórico de Investimentos</Title>
                     {investimentos.length > 0 ? (
                         investimentos.map((item) => (
-                            <div key={item.id} style={{ display: 'flex', justifyContent: 'space-between', padding: '12px 0', borderBottom: '1px solid #070707ff', alignItems: 'center' }}>
-                                
-                                <div style={{ display: 'flex', alignItems: 'center', flexGrow: 1, gap: '15px' }}>
+                            <div key={item.id} className="lista-row">
+
+                                <div className="lista-info">
                                     {editandoId === item.id ? (
                                         <>
-                                            <input 
+                                            <input
                                                 type="text"
-                                                value={descricaoEdicao} 
-                                                onChange={(e) => setDescricaoEdicao(e.target.value)} 
-                                                style={{ fontWeight: 'bold', padding: '6px', borderRadius: '4px', border: '1px solid #ccc', width: '60%' }}
+                                                value={descricaoEdicao}
+                                                onChange={(e) => setDescricaoEdicao(e.target.value)}
+                                                className="lista-input-descricao"
                                                 placeholder="Nome do ativo"
                                             />
-                                            <input 
+                                            <input
                                                 type="number"
-                                                value={valorEdicao} 
-                                                onChange={(e) => setValorEdicao(e.target.value)} 
-                                                style={{ padding: '6px', borderRadius: '4px', border: '1px solid #ccc', width: '25%', fontWeight: 'bold' }}
+                                                value={valorEdicao}
+                                                onChange={(e) => setValorEdicao(e.target.value)}
+                                                className="lista-input-valor"
                                                 placeholder="Valor (R$)"
                                             />
                                         </>
                                     ) : (
                                         <>
-                                            <span style={{ fontWeight: 'bold', minWidth: '150px', color: '#333' }}>
+                                            <span className="lista-descricao">
                                                 {item.descricao || "Sem descrição"}
                                             </span>
-                                            <span style={{ color: '#2196F3', whiteSpace: 'nowrap', fontWeight: '500' }}>
+                                            <span className="lista-valor investimento">
                                                 R$ {Number(item.valor || 0).toFixed(2)}
                                             </span>
                                         </>
                                     )}
                                 </div>
-                                
-                                <span style={{ display: 'flex', gap: '8px', marginLeft: '15px' }}>
+
+                                <span className="lista-acoes">
                                     {editandoId === item.id ? (
                                         <Button type="green" onClick={() => salvarEdicaoInvestimento(item)}>Salvar</Button>
                                     ) : (
-                                        <Button 
-                                            type="action" 
-                                            onClick={() => { 
-                                                setEditandoId(item.id); 
-                                                setDescricaoEdicao(item.descricao || ""); 
-                                                setValorEdicao(item.valor || 0); 
+                                        <Button
+                                            type="action"
+                                            onClick={() => {
+                                                setEditandoId(item.id);
+                                                setDescricaoEdicao(item.descricao || "");
+                                                setValorEdicao(item.valor || 0);
                                             }}
                                         >
                                             Editar
