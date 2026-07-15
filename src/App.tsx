@@ -10,7 +10,6 @@ import { Movimentacoes } from './pages/Movimentacoes';
 import Layout from './components/Layout';
 import { NotFound } from './components/NotFound';
 import { Login } from './pages/Login';
-import NavbarHide from './components/NavbarHide';
 
 
 

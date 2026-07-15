@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Card from "../components/card";
 import DashboardContainer from "../components/DashboardContainer";
 import DashboardGrid from "../components/DashboardGrid";
@@ -128,14 +128,14 @@ import Modal from '../components/Modal';
                     
                     {/* 2. AJUSTE: Botões agora passam a propriedade 'placeholder' correspondente */}
                     <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
-                        <Button tipe='green' onClick={() => setModalConfig({ 
+                        <Button type='green' onClick={() => setModalConfig({ 
                             open: true, 
                             endpoint: 'receita', 
                             label: 'Receita', 
                             placeholder: 'Ex: Salário / Renda extra' 
                         })}>Nova Receita</Button>
                         
-                        <Button tipe='red' onClick={() => setModalConfig({ 
+                        <Button type='red' onClick={() => setModalConfig({ 
                             open: true, 
                             endpoint: 'despesa', 
                             label: 'Despesa', 
@@ -208,10 +208,10 @@ import Modal from '../components/Modal';
 
                                 <span style={{ display: 'flex', gap: '8px', marginLeft: '15px' }}>
                                     {editandoId === item.id ? (
-                                        <Button tipe="green" onClick={() => salvarEdicao(item)}>Salvar</Button>
+                                        <Button type="green" onClick={() => salvarEdicao(item)}>Salvar</Button>
                                     ) : (
                                         <Button
-                                            tipe="blue"
+                                            type="action"
                                             onClick={() => { 
                                                 setEditandoId(item.id); 
                                                 setDescricaoEdicao(item.descricao || ""); 
@@ -221,7 +221,7 @@ import Modal from '../components/Modal';
                                             Editar
                                         </Button>
                                     )}
-                                    <Button tipe="red" onClick={() => deletarMovimentacao(item.id, item.tipo)}>Excluir</Button>
+                                    <Button type="red" onClick={() => deletarMovimentacao(item.id, item.tipo)}>Excluir</Button>
                                 </span>
                             </div>
                         ))

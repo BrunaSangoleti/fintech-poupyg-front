@@ -1,4 +1,4 @@
-// src/pages/Home.tsx
+
 import Card from "../components/card";
 import DashboardContainer from "../components/DashboardContainer";
 import PageHeader from "../components/PageHeader";
@@ -7,11 +7,7 @@ import Text from "../components/Text";
 import DashboardGrid from "../components/DashboardGrid";
 import Button from "../components/Button";
 import { useEffect, useState } from 'react';
-
-import AchievementBadge from "../components/AchievementBadges";
 import { useNavigate } from 'react-router-dom';
-
-
 
 interface Usuario {
     codigo: number; 
@@ -24,7 +20,7 @@ interface Usuario {
 
 export const Perfil = () => {
     const [usuario, setUsuario] = useState<Usuario | null>(null);
-    const [conquistas, setConquistas] = useState([]);
+    
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const navigate = useNavigate();
@@ -51,7 +47,6 @@ export const Perfil = () => {
     };
 
     const carregarDados = async () => {
-        
         const usuarioId = localStorage.getItem('usuarioId');
         
         if (!usuarioId) {
@@ -64,39 +59,20 @@ export const Perfil = () => {
             setLoading(true);
             setError(null);
 
+            // Requisição ajustada para buscar apenas o usuário
+            const response = await fetch(`https://fintech-poupyg-backend.onrender.com/api/usuarios/${usuarioId}`, {
+                headers: getHeaders()
+            });
+
+            if (!response.ok) throw new Error(`Status ${response.status}`);
             
-            const [userRes, conquistasRes] = await Promise.all([
-                fetch(`http://localhost:8080/api/usuarios/${usuarioId}`, {
-                    headers: getHeaders()
-                })
-                .then(r => {
-                    if (!r.ok) throw new Error(`Status ${r.status}`);
-                    return r.json();
-                })
-                .catch(err => {
-                    console.error("Erro ao buscar usuário no Oracle:", err);
-                    return null;
-                }),
-                fetch('http://localhost:8080/api/conquistas', {
-                    headers: getHeaders()
-                })
-                .then(r => {
-                    if (!r.ok) throw new Error(`Status ${r.status}`);
-                    return r.json();
-                })
-                .catch(err => {
-                    console.error("Erro ao buscar conquistas:", err);
-                    return [];
-                })
-            ]);
+            const userRes = await response.json();
 
             if (userRes) {
                 setUsuario(userRes);
             } else {
                 setError("Não foi possível carregar os dados do banco. Verifique o console do Java.");
             }
-            
-            setConquistas(conquistasRes && conquistasRes.content ? conquistasRes.content : conquistasRes);
 
         } catch (err) {
             console.error("Erro crítico no Perfil:", err);
@@ -110,8 +86,7 @@ export const Perfil = () => {
         if (!usuario) return;
 
         try {
-            
-            const response = await fetch(`http://localhost:8080/api/usuarios/${usuario.codigo}`, {
+            const response = await fetch(`https://fintech-poupyg-backend.onrender.com/api/usuarios/${usuario.codigo}`, {
                 method: 'PUT',
                 headers: getHeaders(true),
                 body: JSON.stringify({
@@ -141,7 +116,6 @@ export const Perfil = () => {
         }
 
         try {
-            
             const response = await fetch(`https://fintech-poupyg-backend.onrender.com/api/usuarios/${usuario.codigo}/senha`, {
                 method: 'PUT',
                 headers: getHeaders(true),
@@ -183,19 +157,6 @@ export const Perfil = () => {
 
             <DashboardGrid>
                 <Card size="large">
-                    <Title level="h3">Suas conquistas até o momento</Title>
-                    <div className="achievements-grid" style={{ display: 'flex', gap: '10px', marginTop: '10px', flexWrap: 'wrap' }}>
-                        {conquistas.length > 0 ? (
-                            conquistas.map((c: any) => (
-                                <AchievementBadge key={c.id} conquista={c} />
-                            ))
-                        ) : (
-                            <Text size="body">Nenhuma conquista disponível.</Text>
-                        )}
-                    </div>
-                </Card>
-
-                <Card size="large">
                     <Title level="h3">Dados pessoais:</Title>
                     {usuario ? (
                         <div style={{ marginTop: '10px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
@@ -211,8 +172,8 @@ export const Perfil = () => {
                                     <input type="text" value={telefoneEdicao} onChange={(e) => setTelefoneEdicao(e.target.value)} style={{ padding: '6px', borderRadius: '4px', border: '1px solid #ccc' }} />
                                     
                                     <div style={{ display: 'flex', gap: '8px', marginTop: '10px' }}>
-                                        <Button tipe="green" onClick={salvarPerfil}>Salvar</Button>
-                                        <Button tipe="blue" onClick={() => setIsEditandoPerfil(false)}>Cancelar</Button>
+                                        <Button type="green" onClick={salvarPerfil}>Salvar</Button>
+                                        <Button type="action" onClick={() => setIsEditandoPerfil(false)}>Cancelar</Button>
                                     </div>
                                 </>
                             ) : (
@@ -226,7 +187,7 @@ export const Perfil = () => {
                                         <strong>Membro desde:</strong> {usuario.dataCadastro ? new Date(usuario.dataCadastro).toLocaleDateString() : 'N/A'}
                                     </Text>
                                     <div style={{ marginTop: '10px' }}>
-                                        <Button tipe="blue" onClick={() => {
+                                        <Button type="action" onClick={() => {
                                             setIsEditandoPerfil(true);
                                             setNomeEdicao(usuario.nome);
                                             setEmailEdicao(usuario.email);
@@ -256,14 +217,14 @@ export const Perfil = () => {
                                 <input type="password" value={confirmarNovaSenha} onChange={(e) => setConfirmarNovaSenha(e.target.value)} style={{ padding: '6px', borderRadius: '4px', border: '1px solid #ccc' }} />
                                 
                                 <div style={{ display: 'flex', gap: '8px', marginTop: '10px' }}>
-                                    <Button tipe="green" onClick={salvarNovaSenha}>Atualizar Senha</Button>
-                                    <Button tipe="blue" onClick={limparCamposSenha}>Cancelar</Button>
+                                    <Button type="green" onClick={salvarNovaSenha}>Atualizar Senha</Button>
+                                    <Button type="action" onClick={limparCamposSenha}>Cancelar</Button>
                                 </div>
                             </>
                         ) : (
                             <div className="button-container" style={{ display: 'flex', gap: '10px' }}>
-                                <Button tipe="blue" onClick={() => setIsEditandoSenha(true)}>Trocar senha</Button>
-                                <Button tipe="red" onClick={() => {
+                                <Button type="action" onClick={() => setIsEditandoSenha(true)}>Trocar senha</Button>
+                                <Button type="red" onClick={() => {
                                     localStorage.clear(); 
                                     navigate('/');
                                 }}>Sair</Button>

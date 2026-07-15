@@ -1,18 +1,21 @@
 
+import React from 'react'; 
 import '../stylesheet/Title.css';
 
-// 1. Define os tipos aceitos para o 'level' e para as props
+
 interface TitleProps {
     children: any;
-    level?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'; // Limita as opções para tags válidas
+    level?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'; 
+    style?: React.CSSProperties; 
 }
 
-// 2. Aplica a interface no componente
-const Title = ({ children, level = 'h1' }: TitleProps) => {
+
+const Title = ({ children, level = 'h1', style }: TitleProps) => {
     const Tag = level;
 
     return (
-        <Tag className={`title ${level}`}>
+        
+        <Tag className={`title ${level}`} style={style}>
             {children}
         </Tag>
     );

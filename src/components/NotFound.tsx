@@ -12,7 +12,7 @@ export const NotFound = () => {
                 <Title level='h3'>Não encontramos a página que você procura, mas não se preocupe: seus dados estão seguros e o caminho de volta é logo abaixo.</Title>
                 
 
-                <Button tipe='action' onClick={() => navigate('/home')}>
+                <Button type='action' onClick={() => navigate('/home')}>
                     Voltar para o Dasboard
                 </Button>
             </div>

@@ -1,22 +1,22 @@
-
 import React, { useState } from 'react';
 import Button from './Button';
-import '../stylesheet/LoginForm.css'
-import axios from 'axios';
-import Text from './Text';
+import '../stylesheet/LoginForm.css';
 
 interface LoginFormProps {
     onLogin: (data: any) => void;
 }
 
-export const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
+export const LoginForm = ({ onLogin }: LoginFormProps) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
+    const handleSubmit = (e?: React.SyntheticEvent) => {
+        if (e) {
+            e.preventDefault();
+        }
+        
         onLogin({ email, password });
-    };
+    }; // <- Apenas uma chave e ponto-e-vírgula aqui fechando a função handleSubmit
 
     return (
         <form onSubmit={handleSubmit} className="login-form">
@@ -41,9 +41,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
                 />
             </div>
             
-            <Button tipe='action' >Entrar</Button>
-            
-            
+            <Button type="action" onClick={() => handleSubmit()}>Entrar</Button>
             
         </form>
     );

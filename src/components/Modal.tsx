@@ -25,7 +25,7 @@ const Modal = ({ isOpen, onClose, endpoint, tipoTransacao, onSuccess, placeholde
         }
 
         try {
-            const response = await fetch(`http://localhost:8080/api/${endpoint}`, {
+            const response = await fetch(`https://fintech-poupyg-backend.onrender.com/api/${endpoint}`, {
                 method: 'POST',
                 headers: { 
                     'Content-Type': 'application/json',
@@ -83,8 +83,8 @@ const Modal = ({ isOpen, onClose, endpoint, tipoTransacao, onSuccess, placeholde
                 </div>
 
                 <div className="modal-actions" style={{ display: 'flex', gap: '10px', marginTop: '20px', justifyContent: 'flex-end' }}>
-                    <Button tipe='action' onClick={handleSalvar}>Salvar</Button>
-                    <Button tipe='action' onClick={onClose}>Cancelar</Button>
+                    <Button type='action' onClick={handleSalvar}>Salvar</Button>
+                    <Button type='action' onClick={onClose}>Cancelar</Button>
                 </div>
             </div>
         </div>

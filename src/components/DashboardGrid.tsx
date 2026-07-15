@@ -1,7 +1,8 @@
+import React from 'react'; 
+import '../stylesheet/DashboardGrid.css';
 
-import '../stylesheet/DashboardGrid.css'; 
 
-const DashboardGrid = ({ children }) => {
+const DashboardGrid = ({ children }: { children: React.ReactNode }) => {
     return (
         <div className="dashboard-grid">
             {children}

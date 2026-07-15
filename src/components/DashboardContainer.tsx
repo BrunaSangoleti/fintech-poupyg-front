@@ -1,7 +1,8 @@
-
+import React from 'react'; 
 import '../stylesheet/DashboardContainer.css';
 
-const DashboardContainer = ({ children }) => {
+
+const DashboardContainer = ({ children }: { children: React.ReactNode }) => {
     return (
         <div className="dashboard-container">
             {children}

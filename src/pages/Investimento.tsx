@@ -1,4 +1,4 @@
-// src/pages/Home.tsx
+
 import Card from "../components/card";
 import DashboardContainer from "../components/DashboardContainer";
 import DashboardGrid from "../components/DashboardGrid";
@@ -127,7 +127,7 @@ export const Investimento = () => {
                 <Card size="small">
                     <Title level="h3">Novo ativo</Title>
                     
-                    <Button tipe='green' onClick={() => setModalConfig({ 
+                    <Button type='green' onClick={() => setModalConfig({ 
                         open: true, 
                         endpoint: 'investimento', 
                         label: 'Investimento',
@@ -192,10 +192,10 @@ export const Investimento = () => {
                                 
                                 <span style={{ display: 'flex', gap: '8px', marginLeft: '15px' }}>
                                     {editandoId === item.id ? (
-                                        <Button tipe="green" onClick={() => salvarEdicaoInvestimento(item)}>Salvar</Button>
+                                        <Button type="green" onClick={() => salvarEdicaoInvestimento(item)}>Salvar</Button>
                                     ) : (
                                         <Button 
-                                            tipe="blue" 
+                                            type="action" 
                                             onClick={() => { 
                                                 setEditandoId(item.id); 
                                                 setDescricaoEdicao(item.descricao || ""); 
@@ -205,7 +205,7 @@ export const Investimento = () => {
                                             Editar
                                         </Button>
                                     )}
-                                    <Button tipe="red" onClick={() => deletarInvestimento(item.id)}>Excluir</Button>
+                                    <Button type="red" onClick={() => deletarInvestimento(item.id)}>Excluir</Button>
                                 </span>
                             </div>
                         ))
